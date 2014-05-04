@@ -47,9 +47,10 @@ repToIndex = []
 
 
 def printlog(TopPrint, start=  ""):
-    Refl = " %s '%s' ligne : %s : %s" % (start, inspect.stack()[2][4][0].strip(), inspect.stack()[1][2], TopPrint )
-    print Refl
-    logging.info(Refl)
+    #Refl = " %s '%s' ligne : %s : %s" % (start, inspect.stack()[2][4][0].strip(), inspect.stack()[1][2], TopPrint )
+    #print Refl
+    #logging.info(Refl)
+    pass
 
 def RewriteFile(FileName,result):
     w = open(FileName,"w")
