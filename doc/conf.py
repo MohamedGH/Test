@@ -17,7 +17,7 @@ import os
 sys.path.insert(0,".")
 import auto
 
-mine.AutoDoc2()
+auto.AutoDoc2()
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
