@@ -7,7 +7,6 @@ import inspect
 import mock
 
 sys.path.insert(0, os.path.abspath('.'))
-sys.path.insert(0, "../sources/canolibs/lib/canolibs/unittest")
 
 ModulePath = "modules"
 if os.path.isfile("./logs"):
@@ -17,7 +16,9 @@ logging.basicConfig(filename="logs",level=logging.DEBUG)
 sys.setrecursionlimit(2000)
 
 ListAdded = []
+repToIndex = []
 RepertoireToSearchOn = []
+
 RepertoireToSearchOn.append("../sources/webcore/opt/webcore/libexec")
 RepertoireToSearchOn.append("../sources/amqp2engines/opt/amqp2engines/engines")
 RepertoireToSearchOn.append("../sources/canolibs/lib/canolibs")
@@ -30,20 +31,28 @@ RepertoireToSearchOn.append("../sources/snmp2amqp/opt/snmp2amqp")
 RepertoireToSearchOn.append("../sources/gelf2amqp/opt/gelf2amqp")
 #RepertoireToSearchOn.append("../sources/ccli/opt/ccli")
 RepertoireToSearchOn.append("../sources/ccli/opt/ccli/libexec")
+RepertoireToSearchOn.append("../sources/ics2amqp/opt/ics2amqp")
+RepertoireToSearchOn.append("../sources/wkhtmltopdf-libs/lib/wkhtmltopdf")
+RepertoireToSearchOn.append("../sources/amqp2engines/opt/amqp2engines/unittest")
+RepertoireToSearchOn.append("../sources/amqp2engines/opt/amqp2engines")
+RepertoireToSearchOn.append("../sources/pyperfstore2/test")
+RepertoireToSearchOn.append("../sources/canotools/opt/canotools")
 
+#Crash sphinx in a weird way
+#RepertoireToSearchOn.append("../sources/pyperfstore2")
 
 #RepertoireToSearchOn.append("/home/mine/mock/canopsis/sources/canotools/opt/canotools/")
 #sys.modules["utils.py"] = mock.MagicMock()
 
 
-#def AddAll(path):
-#for root, dirs, files in os.walk(path):
- #   for f in files:
-  #      if f[-3:] == ".py":
-   #         RepertoireToSearchOn.append(os.path.join(root))
-    #        break
+def AddAll(path):
+    for root, dirs, files in os.walk(path):
+       for f in files:
+            if f[-3:] == ".py":
+                RepertoireToSearchOn.append(os.path.join(root))
+                break
 
-repToIndex = []
+
 
 
 def printlog(TopPrint, start=  ""):
@@ -251,7 +260,7 @@ def ResolveError():
                             try :
                                 tist = Lines[-2].split(' ')[5]
                             except IndexError as e:
-                                printlog(e.message+" "+ Lines)
+                                printlog(e.message+" "+ str(Lines))
                                 break
                             #printlog (str(Lines[-2].split(' ')))
 
@@ -331,19 +340,15 @@ def ResolveError():
                             Lines =  traceback.format_exc().splitlines()
                             if(ChecklLastError(LastError,Lines[-1]) == False):
                                 break
-                            #if(LastError == Lines[-1]):
-                             #   printlog("Drop on "+e.message)
-                              #  compteur = 10
-                              #  break
 
-                          #  LastError = Lines[-1]
 
                           
-    print "added : "
+    printlog( "added : ")
     for added in ListAdded:
-        print added
+        printlog (added)
 
 def AutoDoc2():
+    #AddAll("../sources/")
     AutoApi()
     IndexMake()
     ResolveError()
