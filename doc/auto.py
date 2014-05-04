@@ -28,7 +28,7 @@ RepertoireToSearchOn.append("../sources/collectd-libs/opt/collectd-libs")
 RepertoireToSearchOn.append("../sources/apscheduler-libs/lib/apschedulerlibs")
 RepertoireToSearchOn.append("../sources/snmp2amqp/opt/snmp2amqp")
 RepertoireToSearchOn.append("../sources/gelf2amqp/opt/gelf2amqp")
-RepertoireToSearchOn.append("../sources/ccli/opt/ccli")
+#RepertoireToSearchOn.append("../sources/ccli/opt/ccli")
 RepertoireToSearchOn.append("../sources/ccli/opt/ccli/libexec")
 
 
